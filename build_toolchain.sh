@@ -38,8 +38,9 @@ for bin in $(find install -mindepth 2 -maxdepth 3 -type f -exec file {} \; | gre
 	patchelf --set-rpath "$DIR/install/lib" "$bin"
 done
 
+rel_time="$(date +'%H%M')" # HoursMinute
 rel_date="$(date '+%Y%m%d')" # ISO 8601 format
 clang_version="$(install/bin/clang --version | head -n1 | cut -d' ' -f4)"
-files="clang-$clang_version-$rel_date.tar.gz"
+files="clang-$clang_version-$rel_date-$rel_time.tar.gz"
 tar -czvf "$files" install/*
 rclone copy "$files" fadlyas07:drive -P
