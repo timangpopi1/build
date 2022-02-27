@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export PATH=/usr/bin/core_perl:$PATH
+
 DIR="$(pwd ...)"
 
 branch="release/12.x"
