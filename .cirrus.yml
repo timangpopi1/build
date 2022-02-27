@@ -14,8 +14,5 @@ task:
      - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
      - mv rclone.conf ~/.config/rclone/
 
-    chmod_script:
-     - chmod +x *
-
     build_script:
      - bash build_toolchain.sh

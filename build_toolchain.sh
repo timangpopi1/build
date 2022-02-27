@@ -10,14 +10,14 @@ git clone -b "$branch" https://github.com/llvm/llvm-project --depth=1
 
 JobsTotal="$(($(nproc)*4))"
 ./build-llvm.py \
-    --clang-vendor "greenforce" \
-    --defines "LLVM_PARALLEL_COMPILE_JOBS=$JobsTotal LLVM_PARALLEL_LINK_JOBS=$JobsTotal CMAKE_C_FLAGS=-O3 CMAKE_CXX_FLAGS=-O3 LLVM_USE_LINKER=lld LLVM_ENABLE_LLD=ON" \
+    --clang-vendor "Android" \
+    --defines "LLVM_PARALLEL_COMPILE_JOBS=$JobsTotal LLVM_PARALLEL_LINK_JOBS=$JobsTotal CMAKE_C_FLAGS=-O3 CMAKE_CXX_FLAGS=-O3" \
     --projects "clang;lld;polly;compiler-rt" \
     --incremental \
     --no-update \
     --no-ccache \
     --targets "ARM;AArch64" \
-    --lto full \
+    --lto thin \
     --branch "$branch"
 
 ./build-binutils.py --targets arm aarch64
