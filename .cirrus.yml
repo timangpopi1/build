@@ -1,12 +1,21 @@
+env:
+    CIRRUS_CLONE_DEPTH: 1
+
 task:
-    name: build
+    name: Build Toolchains
     timeout_in: 120m
     container:
       image: mhmmdfdlyas/dockerfile:t
       cpu: 8
       memory: 32G
-    run_script: |
-        mkdir -p ~/.config/rclone/
-        wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
-        mv rclone.conf ~/.config/rclone/
-        bash build_toolchain.sh
+
+    rclone_setup_script:
+     - mkdir -p ~/.config/rclone/
+     - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
+     - mv rclone.conf ~/.config/rclone/
+
+    chmod_script:
+     - chmod +x *
+
+    build_script:
+     - bash build_toolchain.sh
