@@ -15,7 +15,6 @@ JobsTotal="$(($(nproc)*4))"
     --no-update \
     --no-ccache \
     --targets "ARM;AArch64" \
-    --pgo kernel-defconfig \
     --lto full \
     --branch "$branch"
 
