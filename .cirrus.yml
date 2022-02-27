@@ -1,0 +1,12 @@
+task:
+    name: build tc
+    timeout_in: 120m
+    container:
+      image: mhmmdfdlyas/dockerfile:t
+      cpu: 8
+      memory: 32G
+    run_script:
+      - mkdir -p ~/.config/rclone/
+      - wget -O rclone.conf https://pastebin.com/raw/saPEwjhS
+      - mv rclone.conf ~/.config/rclone/
+      - bash build_toolchain.sh
